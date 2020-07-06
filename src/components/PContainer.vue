@@ -1,0 +1,10 @@
+<template>
+    <v-app>
+          <v-img 
+            src="../assets/background.png"
+          transition="scale-transition"
+           height="700"
+          >
+          </v-img>
+    </v-app>
+</template>
