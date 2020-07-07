@@ -1,6 +1,6 @@
 <template>
 <v-app>
-      <v-row>
+      <v-row >
         <v-col cols="9" >
     <v-tabs v-model="activeTab" grow>
       <v-tab v-for="tab in tabs" :key="tab.id" :to="tab.route" exact>
@@ -9,12 +9,12 @@
       <v-tab-item v-for="tab in tabs" :key="tab.id" :value="tab.route">
       </v-tab-item>
     </v-tabs>
-    <v-app id="gold">
-    <v-simple-table height="500px">
+    <v-app >
+    <v-simple-table height="600px">
       <template v-slot:default>
-        <tbody >
-          <tr v-for="item in Gold" :key="item.name">
-            <td>{{ item.name }}</td>
+        <tbody>
+          <tr id="gold" v-for="item in Gold" :key="item.name">
+            <td><h3>{{ item.name }}</h3></td>
             <td>{{ item.buy }}</td>
             <td>{{ item.sell }}</td>
           </tr>
@@ -23,13 +23,33 @@
     </v-simple-table>
   </v-app>
         </v-col>
-        <v-col cols="3">
-             <v-img
-             mt-2
+        <v-col  cols="3">
+             <v-img id="img-app"
             src="../assets/Mobile.png"
           transition="scale-transition"
            max-width="250"
-          ></v-img>
+          ><div class="icon-app">
+               <a 
+          href="https://apps.apple.com/app/id1477505685"
+          target="_blank"
+        >
+              <v-btn
+              class="icon-btn"
+      >
+        <v-icon>fab fa-android</v-icon>
+      </v-btn>
+               </a>
+                <a 
+          href="https://play.google.com/store/apps/details?id=com.vnappmob.vprice&hl=vi"
+          target="_blank"
+        >
+        <v-btn
+        class="icon-btn"
+      >
+        <v-icon>fab fa-apple</v-icon>
+      </v-btn>
+                </a>
+            </div></v-img>
         </v-col>
       </v-row>
 </v-app>
@@ -39,7 +59,6 @@ export default {
   props: ["id"],
   data() {
     return {
-      activeTab: `/user/${this.id}`,
       tabs: [
          { id: 0, product: "Product" },
         { id: 1, product: "Buy" },
@@ -71,3 +90,30 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+  $color:#59b6dd;
+  #img-app{
+    margin-left:50px;
+  }
+  #gold:hover{
+    background-color:$color;
+    color:#ffffff;
+  }
+  .icon-app{
+    display:flex;
+    justify-content: center;
+    height:100%;
+    align-items: center;
+    a{
+      text-decoration: none;
+    }
+  .icon-btn{
+    width:100px;
+      color: #59b6dd;
+      height:30px;
+  }
+   .icon-btn:hover{
+    color:#000000;
+  }
+  }
+</style>

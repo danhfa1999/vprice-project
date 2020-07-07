@@ -1,5 +1,5 @@
 <template>
-  <v-app >
+  <v-app id ="demo">
     <v-app-bar
       app
       light
@@ -20,6 +20,13 @@
         target="_blank"
         text
       >
+        <span class="mr-2">Home</span>
+        <v-icon>fas fa-home</v-icon>
+      </v-btn>
+      <v-btn
+        target="_blank"
+        text
+      >
         <span class="mr-2">Languages</span>
         <v-icon>fas fa-language</v-icon>
       </v-btn>
@@ -31,13 +38,11 @@
         <v-icon>fas fa-bell</v-icon>
       </v-btn>
     </v-app-bar>
-
     <v-content >
-      <PContainer/>
+      <PContainer > </PContainer>
     </v-content>
-     <v-content>
-      <Table/>
-    </v-content>
+      <Table1/>
+      <Table2/>
      <v-content>
       <Footer/>
     </v-content>
@@ -46,18 +51,30 @@
 
 <script>
 import PContainer from './components/PContainer';
-import Table from './components/Table';
+import Table1 from './components/Table1';
+import Table2 from './components/Table2';
 import Footer from '@/components/Footer.vue';
+// import Navigation from '@/components/Navigation.vue';
+
 export default {
   name: 'App',
 
   components: {
     PContainer,
-    Table,
-    Footer
+    Table1,
+    // Navigation,
+    Table2,
+    Footer,
   },
   data: () => ({
     //
   }),
 };
 </script>
+
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+#demo{
+  font-family: 'Oswald', sans-serif;
+}
+</style>
