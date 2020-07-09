@@ -1,6 +1,9 @@
 <template>
-  <v-app id="demo">
-    <v-app-bar app light>
+  <v-app id ="demo">
+    <v-app-bar
+      app
+      light
+    >
       <div class="d-flex align-center">
         <v-img
           alt="Vprice Logo"
@@ -10,62 +13,68 @@
           transition="scale-transition"
           width="40"
         />
-        <h1 class="mr-2">Vprice</h1>
+       <h1 class= "mr-2">Vprice</h1>
       </div>
       <v-spacer></v-spacer>
-      <v-btn target="_blank" text>
+       <v-btn
+        target="_blank"
+        text
+      >
         <span class="mr-2">Home</span>
         <v-icon>fas fa-home</v-icon>
       </v-btn>
-      <v-btn target="_blank" text>
+      <v-btn
+        target="_blank"
+        text
+      >
         <span class="mr-2">Languages</span>
         <v-icon>fas fa-language</v-icon>
       </v-btn>
-      <v-btn target="_blank" text>
+      <v-btn
+        target="_blank"
+        text
+      >
         <span class="mr-2">Notifications</span>
         <v-icon>fas fa-bell</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-content>
-      <PContainer></PContainer>
+    <v-content >
+      <PContainer > </PContainer>
     </v-content>
-    <TableSJC />
-    <Table1 />
-    <Table2 />
-    <v-content>
-      <Footer />
+      <Table1/>
+      <Table2/>
+     <v-content>
+      <Footer/>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import PContainer from "./components/PContainer";
-import Table1 from "./components/Table1";
-import Table2 from "./components/Table2";
-import TableSJC from "./components/TableSJC";
-import Footer from "@/components/Footer.vue";
+import PContainer from './components/PContainer';
+import Table1 from './components/Table1';
+import Table2 from './components/Table2';
+import Footer from '@/components/Footer.vue';
 // import Navigation from '@/components/Navigation.vue';
 
 export default {
-  name: "App",
+  name: 'App',
 
   components: {
     PContainer,
     Table1,
     // Navigation,
     Table2,
-    TableSJC,
-    Footer
+    Footer,
   },
   data: () => ({
     //
-  })
+  }),
 };
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap");
-#demo {
-  font-family: "Oswald", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+#demo{
+  font-family: 'Oswald', sans-serif;
 }
 </style>

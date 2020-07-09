@@ -29,7 +29,7 @@
     <v-content>
       <PContainer></PContainer>
     </v-content>
-    <TableSJC />
+    <TableK />
     <Table1 />
     <Table2 />
     <v-content>
@@ -42,7 +42,7 @@
 import PContainer from "./components/PContainer";
 import Table1 from "./components/Table1";
 import Table2 from "./components/Table2";
-import TableSJC from "./components/TableSJC";
+import TableK from "./components/TableK";
 import Footer from "@/components/Footer.vue";
 // import Navigation from '@/components/Navigation.vue';
 
@@ -54,7 +54,7 @@ export default {
     Table1,
     // Navigation,
     Table2,
-    TableSJC,
+    TableK,
     Footer
   },
   data: () => ({
