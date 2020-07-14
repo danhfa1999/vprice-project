@@ -43,17 +43,17 @@ export default {
       sell_item:null,
     Gold: [
     {
-      name: 'SJC 1L,10L',
+      name: 'TPHCM',
     },
     {
-     name: 'SJC 1c',
+     name: 'Hà Nội',
     },
     {
-     name: 'Nhẫn 1c',
+     name: 'Đà Nẵng',
     }
     ,
     {
-      name: 'Trang sức 99.99',
+      name: 'Cần Thơ',
     }
     ]
     };

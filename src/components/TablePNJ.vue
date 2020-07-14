@@ -3,7 +3,7 @@
       <template>
          <thead>
           <tr>
-            <th class="text-left">Sản Phẩm</th>
+           <th class="text-left">Sản Phẩm</th>
             <th class="text-left">Mua vào</th>
              <th class="text-left">Bán ra</th>
           </tr>
@@ -29,6 +29,7 @@
     </v-simple-table>
 </template>
 
+
 <script>
 import axios from "axios";
 export default {
@@ -43,17 +44,20 @@ export default {
       sell_item:null,
     Gold: [
     {
-      name: 'SJC 1L,10L',
+      name: 'Nhẫn PNJ(24k)',
     },
     {
-     name: 'SJC 1c',
+     name: 'Nữ Trang 24K',
     },
     {
-     name: 'Nhẫn 1c',
+     name: 'Nữ Trang 18K',
     }
     ,
     {
-      name: 'Trang sức 99.99',
+      name: 'Nữ Trang 14K',
+    },
+    {
+      name: 'Nữ Trang 10K',
     }
     ]
     };
@@ -90,8 +94,8 @@ export default {
           item = this.item_single;
           delete item.datetime;
           this.value_item = Object.values(item);
-          this.buy_item = this.value_item.slice(0,4);
-          this.sell_item = this.value_item.slice(4);
+          this.buy_item = this.value_item.slice(0,5);
+          this.sell_item = this.value_item.slice(5);
     }
     // ,
     // callData(){

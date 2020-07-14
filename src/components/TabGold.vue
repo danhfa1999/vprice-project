@@ -2,24 +2,19 @@
 <v-app>
       <v-row >
         <v-col cols="9" >
-    <v-tabs v-model="activeTab" grow>
-      <v-tab v-for="tab in tabs" :key="tab.id" :to="tab.route" exact>
-        {{ tab.product }}
+     <v-tabs v-model="activeTab" grow>
+      <v-tab v-for="tab of tabs" :key="tab.id" :to="tab.route" exact>
+        {{ tab.name }}
       </v-tab>
-      <v-tab-item v-for="tab in tabs" :key="tab.id" :value="tab.route">
+
+      <v-tab-item v-for="tab of tabs" :key="tab.id" :value="tab.route">
+         <router-view></router-view>
       </v-tab-item>
     </v-tabs>
     <v-app >
     <v-simple-table height="600px">
-      <template v-slot:default>
-        <tbody>
-          <tr id="gold" v-for="item in Gold" :key="item.name">
-            <td><h3>{{ item.name }}</h3></td>
-            <td>{{ item.buy }}</td>
-            <td>{{ item.sell }}</td>
-          </tr>
-        </tbody>
-      </template>
+        <TableSJC></TableSJC>
+        <AreaChart/>
     </v-simple-table>
   </v-app>
         </v-col>
@@ -55,14 +50,21 @@
 </v-app>
 </template>
 <script>
+import AreaChart from "./AreaChart.vue";
+import TableSJC from "./TableSJC.vue";
 export default {
   props: ["id"],
+  components :{
+    TableSJC,
+    AreaChart
+  },
   data() {
     return {
+      activeTab: `/user/${this.id}`,
       tabs: [
-         { id: 0, product: "Product" },
-        { id: 1, product: "Buy" },
-        { id: 2, product: "Sell" }
+        { id: 1, name: "TableSJC", route: `/user/${this.id}` },
+        { id: 2, name: "TableDOJI", route: `/user/${this.id}/doji` },
+        { id: 3, name: "TablePNJ", route: `/user/${this.id}/pnj` }
       ],
       Gold: [
         {
