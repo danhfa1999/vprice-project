@@ -40,10 +40,17 @@
     <v-app >
     <v-simple-table height="600px">
       <template v-slot:default>
+        <thead>
+          <tr>
+            <th class="text-left">Mua tiền mặt</th>
+            <th class="text-left">Mua chuyển khoản</th>
+             <th class="text-left">Bán ra</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr id="gold" v-for="item in VCB" :key="item.name">
-            <td><th>{{ item.name }}</th>{{ item.buytrans }}</td>
-            <td>{{ item.buy }}</td>
+          <tr id="gold" v-for="item in item_rate" :key="item">
+            <td><th>{{ item.currency }}</th>{{ item.buy_cash }}</td>
+            <td>{{ item.buy_transfer }}</td>
             <td>{{ item.sell }}</td>
           </tr>
         </tbody>
@@ -58,48 +65,39 @@
 import axios from "axios";
 export default {
   props: ["id"],
+  
   data() {
     return {
+        activeTab: `/user/${this.id}`,
+      tabs: [
+        { id: 1, name: "TableSJC", route: `/user/${this.id}` },
+        { id: 2, name: "TableDOJI", route: `/user/${this.id}/doji` },
+        { id: 3, name: "TablePNJ", route: `/user/${this.id}/pnj` }
+      ],
     //   loading: false,
     //   items: null,
-      item_single: null,
-      item_api:null,
-      value_item:null,
-      buy_item:null,
-      sell_item:null,
+      item_rate: null,
     };
   },
   created() {
-    this.fetchData();
-    this.loadData();
-    this.callData();
+    this.getData();
   },
   methods: {
-    fetchData() {
-    //   this.loading = true;
+    getData() {
       var get_url =
         "https://vapi.vnappmob.com/api/v2/exchange_rate/vcb?api_key=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTYwNDA3MTgsImlhdCI6MTU5NDc0NDcxOCwic2NvcGUiOiJleGNoYW5nZV9yYXRlIiwicGVybWlzc2lvbiI6MH0.TivfTflqaPuRgB10ntWVuwTcMzlVheZ5IMAigHObv-8";
       
       axios
         .get(get_url)
         .then(response => {
-            // console.log(response);
-        //   this.loading = false;
-        //   this.items = response.data.results;
-        //   this.items.forEach(item => {
-        //     console.log(item);
-        //   });
-          this.item_single = response.data.results[0];
-          console.log(this.item_single);
-          this.loadData(this.item_single);
+          this.item_rate = response.data.results;
+          console.log(this.item_rate);
         })
         .catch(err => {
         //   this.loading = false;
           console.log(err);
         });
     },
-    loadData(item){
-    }
   }
 };
 </script>
