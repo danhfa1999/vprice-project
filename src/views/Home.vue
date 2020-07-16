@@ -1,5 +1,5 @@
 <template>
-  <v-app id="demo">
+  <v-app id="demo" >
     <v-app-bar app light>
       <div class="d-flex align-center">
         <v-img
@@ -51,5 +51,5 @@ export default {
     TabRate,
     Footer,
   }
-}
+    }
 </script>

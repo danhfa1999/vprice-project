@@ -62,7 +62,7 @@ export default {
     ]
     };
   },
-  created() {
+   created() {
     this.fetchData();
     this.loadData();
     this.callData();
@@ -70,55 +70,30 @@ export default {
   methods: {
     fetchData() {
     //   this.loading = true;
-      var get_url =
-        "https://vapi.vnappmob.com/api/v2/gold/sjc?api_key=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU1MDMzMzksImlhdCI6MTU5NDIwNzMzOSwic2NvcGUiOiJnb2xkIiwicGVybWlzc2lvbiI6MH0.1ybwaA9IKA6rCOzYE5kGPsrCH51lqKMNwYdrEkCnffs";
-      
+
+      var url_gold = "https://vapi.vnappmob.com/api/request_api_key?scope=gold";
+      axios
+        .get(url_gold)
+        .then(response => {
+          this.getDay = response.data.results;
+        }).then(()=>{
+          var get_url =
+        `https://vapi.vnappmob.com/api/v2/gold/sjc?api_key=${this.getDay}`;
       axios
         .get(get_url)
         .then(response => {
-            // console.log(response);
-        //   this.loading = false;
-        //   this.items = response.data.results;
-        //   this.items.forEach(item => {
-        //     console.log(item);
-        //   });
           this.item_single = response.data.results[0];
           this.loadData(this.item_single);
         })
-        .catch(err => {
-        //   this.loading = false;
-          console.log(err);
-        });
+        })
     },
     loadData(item){
-          item = this.item_single;
+         item = this.item_single;
           delete item.datetime;
           this.value_item = Object.values(item);
-          this.buy_item = this.value_item.slice(0,5);
-          this.sell_item = this.value_item.slice(5);
+          this.buy_item = this.value_item.slice(0,4);
+          this.sell_item = this.value_item.slice(4);
     }
-    // ,
-    // callData(){
-    //   return new Promise(function(resolve,reject){
-    //     setTimeout(()=>{
-    //       const URL_api = "https://vapi.vnappmob.com/api/request_api_key?scope=gold";
-         
-    //      return axios
-    //     .get(URL_api)
-    //     .then(response => {
-    //         // console.log(response);
-    //     //   this.loading = false;
-    //     //   this.items = response.data.results;
-    //     //   this.items.forEach(item => {
-    //     //     console.log(item);
-    //     //   });
-    //       this.item_api = response.data.results[0];
-    //       console.log(this.item_api);
-    //       resolve();
-    //     },2000)
-    //     })
-    //   })
-    // }
   }
 };
 </script>

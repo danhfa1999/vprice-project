@@ -8,11 +8,11 @@
       </v-tab>
 
       <v-tab-item v-for="tab of tabs" :key="tab.id" :value="tab.route">
-         <router-view></router-view>
       </v-tab-item>
     </v-tabs>
     <v-app >
     <v-simple-table height="600px">
+         <router-view></router-view>
         <TableSJC></TableSJC>
         <AreaChart/>
     </v-simple-table>
@@ -60,34 +60,12 @@ export default {
   },
   data() {
     return {
-      activeTab: `/user/${this.id}`,
+      activeTab: `/Home/${this.id}`,
       tabs: [
-        { id: 1, name: "TableSJC", route: `/user/${this.id}` },
-        { id: 2, name: "TableDOJI", route: `/user/${this.id}/doji` },
-        { id: 3, name: "TablePNJ", route: `/user/${this.id}/pnj` }
+        { id: 1, name: "TableSJC", route: `/Home/${this.id}` },
+        { id: 2, name: "TableDOJI", route: `/Home/${this.id}/doji` },
+        { id: 3, name: "TablePNJ", route: `/Home/${this.id}/pnj` }
       ],
-      Gold: [
-        {
-          name: 'SJC 1L,10L',
-          buy: 159000,
-          sell: 160000
-        },
-        {
-          name: 'SJC 1c',
-          buy: 237000,
-          sell: 160000
-        },
-        {
-          name: 'Nhẫn 1c',
-          buy: 262000,
-          sell: 160000
-        },
-        {
-          name: 'Trang sức 99.99',
-          buy: 305000,
-          sell: 160000
-        }
-      ]
     };
   }
 };

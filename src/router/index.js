@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
+
+
 Vue.use(VueRouter)
 
   const routes = [
@@ -9,21 +11,6 @@ Vue.use(VueRouter)
     path: '/',
     name: 'Home',
     component: Home
-  },
-  {
-    path: "/TabGold/:id",
-    component: () => import("@/components/TableSJC.vue"),
-    props: true,
-    children: [
-      {
-        path: "doji",
-        component: () => import("@/components/TableDOJI.vue")
-      },
-      {
-        path: "pnj",
-        component: () => import("@/components/TablePNJ.vue")
-      }
-    ]
   }
 ]
 
