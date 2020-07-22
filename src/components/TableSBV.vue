@@ -19,9 +19,7 @@
 <script>
 import axios from "axios";
 export default {
-  name:"TableVCB",
-  props: ["id"],
-  
+  name:"TableSBV",
   data() {
     return {
       item_rate: null,

@@ -1,25 +1,29 @@
 <template>
-    <v-app>
-          <v-img id="shiba"
-            src="../assets/background2.png"
-          transition="scale-transition"
-          >
-          <div id="info">
-           <v-btn
-           large
-           id="btn-info"
-      >
-         <a 
-          href="https://web.vnappmob.com/page/vprice-ung-dung-bao-gia-vang-ty-gia-ngoai-te-133"
-          target="_blank"
-        >
-          Information App
-        </a>
+<v-container>
+    <v-toolbar flat>
+      <v-toolbar-title>
+        <v-card-title  large class="mr-12 pr-12">Vprice</v-card-title>
+</v-toolbar-title>
+       <v-toolbar-items>
+      <v-btn text color="deep-purple accent-4">
+        Rate Exchange
       </v-btn>
-          </div>
-          </v-img>
-          <Navigation/>
-    </v-app>
+      <v-btn text color="deep-purple accent-4">
+        Gold
+      </v-btn>
+      <v-btn text color="deep-purple accent-4">
+        Help
+      </v-btn>
+      </v-toolbar-items>
+      <v-spacer></v-spacer>
+       <v-btn class="mr-6" icon large >
+        <v-icon>fas fa-align-right</v-icon>
+      </v-btn>
+      <v-btn class="mr-6" icon large>
+        <v-icon>far fa-lightbulb</v-icon>
+      </v-btn>
+    </v-toolbar>
+</v-container>
 </template>
 
 <style lang="scss">

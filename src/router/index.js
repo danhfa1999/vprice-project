@@ -1,17 +1,19 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import TableVCB from '../components/TableVCB.vue'
 
 
 
 Vue.use(VueRouter)
 
-  const routes = [
-  {
+  const routes = [{
     path: '/',
-    name: 'Home',
     component: Home
   }
+    ,{    path: '/VCB',
+    component: TableVCB
+    }
 ]
 
 const router = new VueRouter({

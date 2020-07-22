@@ -29,39 +29,106 @@
                 </a>
             </div></v-img>
         </v-col>
-        <v-col cols="9" >
-    <v-tabs v-model="activeTab" grow>
-      <v-tab v-for="tab in tabs" :key="tab.id" :to="tab.route" exact>
-        {{ tab.product }}
-      </v-tab>
-      <v-tab-item v-for="tab in tabs" :key="tab.id" :value="tab.route">
-      </v-tab-item>
-    </v-tabs>
-    <v-app >
-    <v-simple-table height="600px">
-      <TableVCB></TableVCB>  
-    </v-simple-table>
-  </v-app>
+        <v-col cols="2"></v-col>
+        <v-col cols="6">
+           <v-tabs
+          v-model="tab"
+          grow
+        >
+          <v-tabs-slider color="yellow"></v-tabs-slider>
+          <v-tab v-for="item in items" link
+          :to="item.path" :key="item.name">
+              {{ item.name }}
+          </v-tab>
+        </v-tabs>
+          <v-card class="text-center"  elevation="10">
+            <TableVCB></TableVCB>
+            <!-- <router-link to="/"></router-link> -->
+   <!-- <v-simple-table>
+        <thead>
+          <tr>
+            <th class="text-center">Mua tiền mặt</th>
+            <th class="text-center">Mua chuyển khoản</th>
+             <th class="text-center">Bán ra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id ="gold" v-for="item in item_rate" :key="item">
+            <td><th>{{ item.currency }}</th>{{ item.buy_cash }}</td>
+            <td>{{ item.buy_transfer }}</td>
+            <td>{{ item.sell }}</td>
+          </tr>
+        </tbody>
+   </v-simple-table> -->
+        </v-card>
         </v-col>
       </v-row>
 </v-app>
 </template>
 <script>
-import TableVCB from "./TableVCB.vue";
+import axios from "axios";
+import TableVCB from '../components/TableVCB.vue'
 export default {
+  name:"TabRate",
   props: ["id"],
   components:{
     TableVCB
   },
-  data() {
+ data() {
     return {
-        activeTab: `/user/${this.id}`,
-      tabs: [
-        { id: 1, name: "TableSJC", route: `/user/${this.id}` },
-        { id: 2, name: "TableDOJI", route: `/user/${this.id}/doji` },
-        { id: 3, name: "TablePNJ", route: `/user/${this.id}/pnj` }
-      ],
-  }
+      item_rate: null,
+      items:[
+        {
+        name:'VCB',
+        path:'/VCB'
+         },
+        {
+        name:'CTG',
+        path:'/CTG'
+        },
+        {
+          name:'TCB',
+          path:'/TCB'
+        },
+        {
+          name:'STB',
+          path:'/STB'
+        },
+        {
+          name:'BIDV',
+          path:'/BIDV'
+        },
+                {
+          name:'SBV',
+          path:'/SBV'
+        }
+      ]
+    };
+  },
+  created() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      var url_gold = "https://vapi.vnappmob.com/api/request_api_key?scope=exchange_rate";
+      axios
+        .get(url_gold)
+        .then(response => {
+          this.getDay = response.data.results;
+        }).then(()=>{
+          var get_url =
+        `https://vapi.vnappmob.com/api/v2/exchange_rate/vcb?api_key=${this.getDay}`;
+      axios
+        .get(get_url)
+        .then(response => {
+          this.item_rate = response.data.results; 
+        })
+        .catch(err => {
+        //   this.loading = false;
+          console.log(err);
+        });
+        })
+    },
   }
 };
 </script>
