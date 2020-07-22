@@ -38,10 +38,12 @@
           <v-tabs-slider color="yellow"></v-tabs-slider>
           <v-tab v-for="item in items" link
           :to="item.path" :key="item.name">
-            {{ item.name }}
+              {{ item.name }}
           </v-tab>
         </v-tabs>
           <v-card class="text-center"  elevation="10">
+            <!-- <TableVCB></TableVCB> -->
+            <router-link to="/TableVCB"></router-link>
    <v-simple-table>
         <thead>
           <tr>
@@ -65,17 +67,20 @@
 </template>
 <script>
 import axios from "axios";
-
+// import TableVCB from '../components/TableVCB.vue'
 export default {
+  name:"TabRate",
   props: ["id"],
-  name:"TableTCB",
+  components:{
+    // TableVCB
+  },
  data() {
     return {
       item_rate: null,
       items:[
         {
         name:'VCB',
-        path:'/'
+        path:'/VCB'
          },
         {
         name:'CTG',
@@ -112,7 +117,7 @@ export default {
           this.getDay = response.data.results;
         }).then(()=>{
           var get_url =
-        `https://vapi.vnappmob.com/api/v2/exchange_rate/vcb?api_key=${this.getDay}`;
+        `https://vapi.vnappmob.com/api/v2/exchange_rate/tcb?api_key=${this.getDay}`;
       axios
         .get(get_url)
         .then(response => {

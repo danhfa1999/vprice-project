@@ -4,7 +4,7 @@
       <v-col cols="4">
     <v-card class="text-center mt-16 py-6"  elevation="10">
      <v-simple-table md="6" lg="6" xl="6" >
-         <thead>
+         <thead class="branch-list">
           <tr>
             <th class="text-center">Sản Phẩm</th>
             <th class="text-center">Mua vào</th>
@@ -40,7 +40,7 @@
     <v-card class="text-center mt-16 py-6"  elevation="10">
      <v-simple-table md="6" lg="6" xl="6" >
          <thead>
-          <tr>
+          <tr class="branch-list">
             <th class="text-center">Sản Phẩm</th>
             <th class="text-center">Mua vào</th>
             <th class="text-center">Bán ra</th>
@@ -74,7 +74,7 @@
        <v-col cols="4">
     <v-card class="text-center mt-16" elevation="10">
      <v-simple-table md="6" lg="6" xl="6" >
-         <thead>
+         <thead class="branch-list">
           <tr>
             <th class="text-center">Sản Phẩm</th>
             <th class="text-center">Mua vào</th>
@@ -116,7 +116,7 @@
       <v-col cols="8" class="">
            <v-card
     class="text-center"
-    color="white"
+    color="cyan accent-4"
     max-width="600"
     height="300"
     shaped elevation="10"
@@ -140,9 +140,10 @@
       </v-sheet>
     </v-card-text>
     <v-card-text>
-      <div class="font-weight-bold">SJC 1L,10L</div>
+      <div class="font-weight-bold"><kbd>SJC 1L,10L</kbd></div>
     </v-card-text>
   </v-card>
+
       </v-col>
       <v-col cols="4">
         
@@ -211,7 +212,7 @@ export default {
       padding: 8,
       lineCap: 'round',
       gradient: gradients[5],
-      value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0],
+      value: [0, 2, 5, 9, 5, 10, 3, 5],
       gradientDirection: 'top',
       gradients,
       fill: false,

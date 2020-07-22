@@ -5,7 +5,7 @@
       <TableSJC></TableSJC>
       </v-app>
       <v-app>
-        <TabRate></TabRate>
+        <TableVCB></TableVCB>
       </v-app>
       <v-content>
       <Footer></Footer>
@@ -17,7 +17,7 @@
 // @ is an alias to /src
 import PContainer from '@/components/PContainer.vue'
 // import TabGold from '@/components/TabGold.vue'
-import TabRate from '@/components/TabRate.vue'
+import TableVCB from '@/components/TableVCB.vue'
 import Footer from '@/components/Footer.vue'
    import TableSJC from '@/components/TableSJC.vue'
 export default {
@@ -25,9 +25,8 @@ export default {
   components: {
     PContainer,
     TableSJC,
-    // TabGold,
-    TabRate,
+    TableVCB,
     Footer,
   }
-    }
+}
 </script>

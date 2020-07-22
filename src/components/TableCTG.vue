@@ -42,6 +42,8 @@
           </v-tab>
         </v-tabs>
           <v-card class="text-center"  elevation="10">
+            <!-- <TableVCB></TableVCB> -->
+            <router-link to="/TableVCB"></router-link>
    <v-simple-table>
         <thead>
           <tr>
@@ -65,10 +67,13 @@
 </template>
 <script>
 import axios from "axios";
-
+// import TableVCB from '../components/TableVCB.vue'
 export default {
+  name:"TabRate",
   props: ["id"],
-  name:"TableCTG",
+  components:{
+    // TableVCB
+  },
  data() {
     return {
       item_rate: null,
@@ -112,7 +117,7 @@ export default {
           this.getDay = response.data.results;
         }).then(()=>{
           var get_url =
-        `https://vapi.vnappmob.com/api/v2/exchange_rate/vcb?api_key=${this.getDay}`;
+        `https://vapi.vnappmob.com/api/v2/exchange_rate/ctg?api_key=${this.getDay}`;
       axios
         .get(get_url)
         .then(response => {

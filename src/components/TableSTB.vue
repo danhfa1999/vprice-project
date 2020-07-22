@@ -112,7 +112,7 @@ export default {
           this.getDay = response.data.results;
         }).then(()=>{
           var get_url =
-        `https://vapi.vnappmob.com/api/v2/exchange_rate/vcb?api_key=${this.getDay}`;
+        `https://vapi.vnappmob.com/api/v2/exchange_rate/stb?api_key=${this.getDay}`;
       axios
         .get(get_url)
         .then(response => {
