@@ -133,7 +133,7 @@ export default {
     margin-left:50px;
   }
   #gold:hover{
-    background-color:#59b6dd;
+    background-color:#00BFA5;
     color:#ffffff;
     th{
        color:#ffffff;
@@ -141,7 +141,7 @@ export default {
   }
   #gold{
      th{
-        color:#59b6dd;
+        color:#00BFA5;
      }
   }
   .icon-app{
@@ -152,13 +152,13 @@ export default {
   .icon-btn{
     width:100px;
     height:30px;
-    color: #59b6dd;
+    color: #00BFA5;
   }
    .icon-btn:hover{
     color:#000000;
   }
   }
   #hjhj{
-     background-color:#59b6dd;
+     background-color:#00BFA5;
   }
 </style>

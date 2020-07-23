@@ -1,25 +1,55 @@
 <template>
-<v-container>
+<v-container fuild>
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+    >
+      <v-list-item>
+        <v-list-item-avatar>
+          <v-img src=""></v-img>
+        </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title></v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-divider></v-divider>
+      <v-list dense>
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          link
+        >
+          <v-list-item-icon>
+            <v-icon>{{  }}</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>{{  }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
     <v-toolbar flat>
       <v-toolbar-title>
         <v-card-title  id="branch-logo" large class="mr-12 pr-12">Vprice</v-card-title>
 </v-toolbar-title>
        <v-toolbar-items>
-      <v-btn text color="cyan accent-4">
+      <v-btn text color="teal accent-4 ">
         Rate Exchange
       </v-btn>
-      <v-btn text color="cyan accent-4">
+      <v-btn text color="teal accent-4">
         Gold
       </v-btn>
-      <v-btn text color="cyan accent-4">
+      <v-btn text color="teal accent-4">
         CONTACT
       </v-btn>
       </v-toolbar-items>
       <v-spacer></v-spacer>
-       <v-btn class="mr-6" icon large >
+       <v-btn class="mx-6"  @click.stop="drawer = !drawer" icon large color="teal accent-4">
         <v-icon>fas fa-align-right</v-icon>
       </v-btn>
-      <v-btn class="mr-6" icon large>
+      <v-btn class="mr-6 mx-6"  
+ icon large color="teal accent-4">
         <!-- <Navigation> -->
         <v-icon>far fa-lightbulb</v-icon>
         <!-- </Navigation> -->

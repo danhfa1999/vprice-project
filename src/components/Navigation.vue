@@ -12,7 +12,6 @@
           :mini-variant="true"
           :src="bg"
           absolute
-          primary
         >
           <v-list
             dense

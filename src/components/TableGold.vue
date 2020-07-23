@@ -2,8 +2,8 @@
     <v-app>
     <v-row>
       <v-col cols="4">
-    <v-card class="text-center mt-16 py-6"  elevation="10">
-     <v-simple-table md="6" lg="6" xl="6" >
+    <v-card class="text-center mt-16 py-6 ml-6"  elevation="10">
+     <v-simple-table md="6" lg="6" xl="6">
          <thead class="branch-list">
           <tr>
             <th class="text-center">Sản Phẩm</th>
@@ -72,7 +72,7 @@
     </v-card>
       </v-col> 
        <v-col cols="4">
-    <v-card class="text-center mt-16" elevation="10">
+    <v-card class="text-center mt-16 mr-6"  elevation="10">
      <v-simple-table md="6" lg="6" xl="6" >
          <thead class="branch-list">
           <tr>
@@ -113,13 +113,18 @@
       </v-col> 
       </v-row>
       <v-row>
-      <v-col cols="8" class="">
+        <v-col cols="1"></v-col>
+      <v-col cols="7" class="">
+          <v-hover
+        v-slot:default="{ hover }"
+        open-delay="200"
+      >
            <v-card
     class="text-center"
-    color="cyan accent-4"
-    max-width="600"
-    height="300"
-    shaped elevation="10"
+    color="light"
+    max-width="700"
+    height="270"
+    shaped :elevation="hover ? 20:2"
   >
     <v-card-text>
       <v-sheet>
@@ -128,6 +133,7 @@
     :gradient="gradient"
     :smooth="radius || false"
     :padding="padding"
+    :show-labels="value"
     :labels="labels"
     :line-width="width"
     :stroke-linecap="lineCap"
@@ -140,14 +146,22 @@
       </v-sheet>
     </v-card-text>
     <v-card-text>
-      <div class="font-weight-bold"><kbd>SJC 1L,10L</kbd></div>
+      <div class="font-weight-bold"><pwd>SJC 1L,10L</pwd></div>
     </v-card-text>
   </v-card>
-
+          </v-hover>
       </v-col>
       <v-col cols="4">
-        
+         <v-hover
+        v-slot:default="{ hover }"
+        open-delay="200"
+      >
+        <v-card shaped :elevation="hover ? 20:2" class="mr-12 mb-12">
+        <v-date-picker color="teal accent-4" :landscape=true v-model="picker"></v-date-picker>
+        </v-card>
+         </v-hover>
       </v-col>
+      <v-col cols="2" ></v-col>
       </v-row>
 </v-app>
 </template>
@@ -208,12 +222,12 @@ export default {
         'Mon',
       ],
      width: 2,
-      radius: 10,
-      padding: 8,
+      radius: 20,
+      padding: 5,
       lineCap: 'round',
-      gradient: gradients[5],
-      value: [0, 2, 5, 9, 5, 10, 3, 5],
-      gradientDirection: 'top',
+      gradient: gradients[3],
+      value: [0, 20000, 50000, 17, 2, 10, 3, 5],
+      gradientDirection: 'bottom',
       gradients,
       fill: false,
       type: 'trend',
