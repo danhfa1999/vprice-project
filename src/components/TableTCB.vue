@@ -107,6 +107,7 @@ export default {
   },
   created() {
     this.getData();
+    this.$option.setinterval = setInterval(this.getData,60000);
   },
   methods: {
     getData() {

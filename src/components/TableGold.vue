@@ -103,7 +103,7 @@
           <td>{{ item_PNJ.sell_nt_14k }}</td>
         </tr>
          <tr >
-          <td>{{PNJ[3]}}</td>
+          <td>{{PNJ[4]}}</td>
           <td>{{ item_PNJ.buy_nt_10k }}</td>
           <td>{{ item_PNJ.sell_nt_10k }}</td>
         </tr>
@@ -222,8 +222,7 @@ export default {
   },
   created() {
     this.fetchData();
-    this.loadData();
-    this.callData();
+    this.$options.interval = setInterval(this.fetchData,60000);
   },
   methods: {
     fetchData() {
@@ -253,10 +252,9 @@ export default {
         })
     },
   },
-   callData(){
-    this.fetchData();
-    setTimeout(this.callData,5000);
-  }
+      beforeDestroy() {
+        clearInterval(this.$options.interval)
+      },
 };
 </script>
 

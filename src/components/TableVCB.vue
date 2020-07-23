@@ -107,6 +107,7 @@ export default {
   },
   created() {
     this.getData();
+    this.$option.setinterval = setInterval(this.getData,60000);
   },
   methods: {
     getData() {
@@ -115,6 +116,7 @@ export default {
         .get(url_gold)
         .then(response => {
           this.getDay = response.data.results;
+          console.log(this.getDay);
         }).then(()=>{
           var get_url =
         `https://vapi.vnappmob.com/api/v2/exchange_rate/vcb?api_key=${this.getDay}`;
@@ -129,6 +131,9 @@ export default {
         });
         })
     },
+  },
+  beforeDestroy(){
+    clearInterval(this.$options.setinterval);
   }
 };
 </script>
