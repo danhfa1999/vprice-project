@@ -15,12 +15,12 @@
         <tr>
           <td>{{SJC[0]}}</td>
           <td>{{ item_SJC.buy_1c }}</td>
-          <td>{{ item_SJC.sell_1c }}</td>
+          <td>{{ item_SJC.sell_1l }}</td>
         </tr>
         <tr >
           <td>{{SJC[1]}}</td>
           <td>{{ item_SJC.buy_1l }}</td>
-          <td>{{ item_SJC.sell_1l }}</td>
+          <td>{{ item_SJC.sell_1c }}</td>
         </tr>
         <tr >
           <td>{{SJC[2]}}</td>
@@ -270,7 +270,11 @@ export default {
           console.log(this.item_SJC);
           this.item_DOJI = responses[1].data.results[0];
           this.item_PNJ = responses[2].data.results[0];
-}))
+})).catch(err => {
+          localStorage.clear();
+          this.getData();
+          console.log(err);
+        });
         },
     checkData:function(){
       console.log("Go to check Data Gold");
