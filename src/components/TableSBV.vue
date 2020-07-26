@@ -46,7 +46,7 @@
 import axios from "axios";
 
 export default {
-  name:"TableSTB",
+  name:"TableSBV",
 components:{
     // TableVCB
   },
@@ -85,7 +85,6 @@ components:{
   },
  created() {
     this.checkData();
-    this.getData();
   },
   methods: {
     getData:function() {
@@ -108,18 +107,15 @@ components:{
         .get(get_url)
         .then(response => {
           this.item_rate = response.data.results;
-          console.log("Shiba");
         })
     },
     checkData:function(){
-      console.log("Go to check Data");
       if(localStorage.getItem("api")!==null){
           this.callData();
           setTimeout(this.checkData,600000);
       }
       else{
           this.getData();
-           console.log("Go to call Again data");
            setTimeout(this.checkData,600000);
       }
     }

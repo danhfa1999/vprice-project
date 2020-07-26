@@ -2,7 +2,7 @@
     <v-app>
     <v-row>
       <v-col cols="4">
-    <v-card class="text-center mt-16 py-6 ml-6"  elevation="10">
+    <v-card class="text-center mt-16 py-6 ml-6" shaped elevation="10">
      <v-simple-table md="6" lg="6" xl="6">
          <thead class="branch-list">
           <tr>
@@ -37,7 +37,7 @@
     </v-card>
       </v-col> 
        <v-col cols="4">
-    <v-card class="text-center mt-16 py-6"  elevation="10">
+    <v-card class="text-center mt-16 py-6"  shaped elevation="10">
      <v-simple-table md="6" lg="6" xl="6" >
          <thead>
           <tr class="branch-list">
@@ -52,7 +52,7 @@
           <td>{{ item_DOJI.buy_hcm }}</td>
           <td>{{ item_DOJI.sell_hcm }}</td>
         </tr>
-        <tr >
+        <tr>
           <td>{{DOJI[1]}}</td>
           <td>{{ item_DOJI.buy_hn }}</td>
           <td>{{ item_DOJI.sell_hn }}</td>
@@ -72,7 +72,7 @@
     </v-card>
       </v-col> 
        <v-col cols="4">
-    <v-card class="text-center mt-16 mr-6"  elevation="10">
+    <v-card class="text-center mt-16 mr-6" shaped elevation="10">
      <v-simple-table md="6" lg="6" xl="6" >
          <thead class="branch-list">
           <tr>
@@ -112,6 +112,8 @@
     </v-card>
       </v-col> 
       </v-row>
+      <v-divider></v-divider>
+      
       <v-row>
         <v-col cols="1"></v-col>
       <v-col cols="7" class="">
@@ -239,7 +241,6 @@ export default {
   },
    created() {
     this.checkData();
-    this.getData();
   },
   methods: {
     getData:function() {

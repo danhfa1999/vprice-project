@@ -21,8 +21,8 @@
           </v-tab>
         </v-tabs>
           <v-card class="text-center"  elevation="10">
+            <router-link to="/TableTCB"></router-link>
             <!-- <TableVCB></TableVCB> -->
-            <router-link to="/TableVCB"></router-link>
    <v-simple-table>
         <thead>
           <tr>
@@ -88,7 +88,6 @@ export default {
   },
  created() {
     this.checkData();
-    this.getData();
   },
   methods: {
     getData:function() {

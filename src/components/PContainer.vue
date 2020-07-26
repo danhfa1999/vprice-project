@@ -1,5 +1,5 @@
 <template>
-<v-container fuild>
+<div>
     <v-navigation-drawer
       v-model="drawer"
       absolute
@@ -18,10 +18,9 @@
         <v-list-item
           v-for="item in items"
           :key="item.title"
-          link
         >
           <v-list-item-icon>
-            <v-icon>{{ items.icon }}</v-icon>
+            <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -29,7 +28,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar flat>
+    <v-toolbar  light >
       <v-toolbar-title>
         <v-card-title  id="branch-logo" large class="mr-12 pr-12">Vprice</v-card-title>
 </v-toolbar-title>
@@ -55,7 +54,7 @@
         <!-- </Navigation> -->
       </v-btn>
     </v-toolbar>
-</v-container>
+</div>
 </template>
 <script>
 // import Navigation from '../components/Navigation.vue'
@@ -68,9 +67,9 @@ export default {
     return {
     drawer: null,
         items: [
-          { title: 'Home', icon: 'dashboard' },
-          { title: 'Rate Exchange', icon: 'coins' },
-          { title: 'Gold', icon: 'fa dollar-sign' },
+          { title: 'Home', icon: 'fa-home' },
+          { title: 'Rate Exchange', icon: 'fa-exchange' },
+          { title: 'Gold', icon: 'fa-gold' },
           { title: 'Contact', icon: 'address-book' }
         ],
     };
