@@ -21,10 +21,10 @@
           link
         >
           <v-list-item-icon>
-            <v-icon>{{  }}</v-icon>
+            <v-icon>{{ items.icon }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title>{{  }}</v-list-item-title>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -69,7 +69,9 @@ export default {
     drawer: null,
         items: [
           { title: 'Home', icon: 'dashboard' },
-          { title: 'About', icon: 'question_answer' },
+          { title: 'Rate Exchange', icon: 'coins' },
+          { title: 'Gold', icon: 'fa dollar-sign' },
+          { title: 'Contact', icon: 'address-book' }
         ],
     };
   },

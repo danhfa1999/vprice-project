@@ -133,7 +133,7 @@
     :gradient="gradient"
     :smooth="radius || false"
     :padding="padding"
-    :show-labels="value"
+    :show-labels= true
     :labels="labels"
     :line-width="width"
     :stroke-linecap="lineCap"
@@ -182,12 +182,15 @@ export default {
   components:{
     
   },
+  api_gold:"https://vapi.vnappmob.com/api/request_api_key?scope=gold",
   data() {
     return {
       item_SJC: null,
       item_DOJI:null,
       item_PNJ:null,
       sell_item:null,
+      getDay: null,
+      url_gold:null,
       tab: null,
         items: [
           'SJC', 'DOJI', 'PNJ'
@@ -234,25 +237,31 @@ export default {
       autoLineWidth: false,
     };
   },
-  created() {
-    this.fetchData();
-    this.$options.interval = setInterval(this.fetchData,60000);
+   created() {
+    this.checkData();
+    this.getData();
   },
   methods: {
-    fetchData() {
-    //   this.loading = true;
-      var url_gold = "https://vapi.vnappmob.com/api/request_api_key?scope=gold";
+    getData:function() {
       axios
-        .get(url_gold)
+        .get(this.$options.api_gold)
         .then(response => {
-          this.getDay = response.data.results;
-        }).then(()=>{
-          var get_sjc =
-        `https://vapi.vnappmob.com/api/v2/gold/sjc?api_key=${this.getDay}`;
+              this.getDay = response.data.results;
+              localStorage.setItem("api_gold",this.getDay);
+        })
+        .catch(err => {
+        //   this.loading = false;
+          console.log(err);
+        });
+    },
+    callData:function(){
+      this.url_gold = localStorage.getItem("api_gold");
+       var get_sjc =
+        `https://vapi.vnappmob.com/api/v2/gold/sjc?api_key=${this.url_gold}`;
         var get_doji =
-        `https://vapi.vnappmob.com/api/v2/gold/doji?api_key=${this.getDay}`;
+        `https://vapi.vnappmob.com/api/v2/gold/doji?api_key=${this.url_gold}`;
         var get_pnj =
-        `https://vapi.vnappmob.com/api/v2/gold/pnj?api_key=${this.getDay}`;
+        `https://vapi.vnappmob.com/api/v2/gold/pnj?api_key=${this.url_gold}`;
         const requestOne = axios.get(get_sjc);
         const requestTwo = axios.get(get_doji);
         const requestThree = axios.get(get_pnj);
@@ -260,16 +269,23 @@ export default {
           this.item_SJC = responses[0].data.results[0];
           console.log(this.item_SJC);
           this.item_DOJI = responses[1].data.results[0];
-          console.log(this.item_DOJI);
           this.item_PNJ = responses[2].data.results[0];
 }))
-        })
-    },
-  },
-      beforeDestroy() {
-        clearInterval(this.$options.interval)
-      },
-};
+        },
+    checkData:function(){
+      console.log("Go to check Data Gold");
+      if(localStorage.getItem("api_gold")!==null){
+          this.callData();
+          setTimeout(this.checkData,600000);
+      }
+      else{
+          this.getData();
+           console.log("Go to call Again data Gold");
+           setTimeout(this.checkData,600000);
+      }
+    }
+    }
+    }
 </script>
 
 <style lang="scss">

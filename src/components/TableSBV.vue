@@ -3,31 +3,10 @@
       <v-row >
          <v-col  cols="3">
              <v-img id="img-app"
-            src="../assets/Mobile.png"
+            src="../assets/sbv.jpg"
           transition="scale-transition"
            max-width="250"
-          ><div class="icon-app">
-                <a 
-          href="https://apps.apple.com/app/id1477505685"
-          target="_blank"
-        >
-              <v-btn
-              class="icon-btn"
-      >
-        <v-icon>fab fa-android</v-icon>
-      </v-btn>
-               </a>
-                <a 
-          href="https://play.google.com/store/apps/details?id=com.vnappmob.vprice&hl=vi"
-          target="_blank"
-        >
-        <v-btn
-        class="icon-btn"
-      >
-        <v-icon>fab fa-apple</v-icon>
-      </v-btn>
-                </a>
-            </div></v-img>
+          ></v-img>
         </v-col>
         <v-col cols="2"></v-col>
         <v-col cols="6">
@@ -67,18 +46,22 @@
 import axios from "axios";
 
 export default {
-  props: ["id"],
   name:"TableSTB",
+components:{
+    // TableVCB
+  },
  data() {
     return {
       item_rate: null,
+      url_rate:null,
+      getDay:null,
       items:[
         {
-        name:'VCB',
+          name:'VCB',
         path:'/VCB'
          },
         {
-        name:'CTG',
+          name:'CTG',
         path:'/CTG'
         },
         {
@@ -94,39 +77,54 @@ export default {
           path:'/BIDV'
         },
                 {
-          name:'SBV',
+                  name:'SBV',
           path:'/SBV'
         }
       ]
     };
   },
-  created() {
+ created() {
+    this.checkData();
     this.getData();
-    this.$option.setinterval = setInterval(this.getData,60000);
   },
   methods: {
-    getData() {
-      var url_gold = "https://vapi.vnappmob.com/api/request_api_key?scope=exchange_rate";
+    getData:function() {
       axios
-        .get(url_gold)
+        .get(this.$options.url_gold)
         .then(response => {
-          this.getDay = response.data.results;
-        }).then(()=>{
-          var get_url =
-        `https://vapi.vnappmob.com/api/v2/exchange_rate/sbv?api_key=${this.getDay}`;
-      axios
-        .get(get_url)
-        .then(response => {
-          this.item_rate = response.data.results; 
+              this.getDay = response.data.results;
+              localStorage.setItem("api",this.getDay);
         })
         .catch(err => {
         //   this.loading = false;
           console.log(err);
         });
+    },
+    callData:function(){
+      this.url_rate = localStorage.getItem("api");
+      var get_url =
+        `https://vapi.vnappmob.com/api/v2/exchange_rate/sbv?api_key=${this.url_rate}`;
+      axios
+        .get(get_url)
+        .then(response => {
+          this.item_rate = response.data.results;
+          console.log("Shiba");
         })
     },
+    checkData:function(){
+      console.log("Go to check Data");
+      if(localStorage.getItem("api")!==null){
+          this.callData();
+          setTimeout(this.checkData,600000);
+      }
+      else{
+          this.getData();
+           console.log("Go to call Again data");
+           setTimeout(this.checkData,600000);
+      }
+    }
+    }
   }
-};
 </script>
 <style lang="scss">
   #img-app{
