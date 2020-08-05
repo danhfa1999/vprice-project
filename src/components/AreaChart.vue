@@ -2,12 +2,12 @@
 import { Line } from "vue-chartjs";
 
 export default {
-   name:"AreaChart",
+  name: "AreaChart",
   extends: Line,
   data() {
     return {
       gradient: null,
-      gradient2: null
+      gradient2: null,
     };
   },
   mounted() {
@@ -18,18 +18,9 @@ export default {
     this.gradient.addColorStop(0, "rgba(255, 0,0, 0.5)");
     this.gradient.addColorStop(0.5, "rgba(255, 0, 0, 0.25)");
     this.gradient.addColorStop(1, "rgba(255, 0, 0, 0)");
-
     this.renderChart(
       {
-        labels: [
-          "Mon",
-          "Tues",
-          "Wed",
-          "Fri",
-          "Thurs",
-          "Sat",
-          "Sun"
-        ],
+        labels: ["Mon", "Tues", "Wed", "Fri", "Thurs", "Sat", "Sun"],
         datasets: [
           {
             label: "Data One",
@@ -38,12 +29,12 @@ export default {
             borderWidth: 1,
             pointBorderColor: "white",
             backgroundColor: this.gradient,
-            data: [40, 39, 10, 40, 39, 80, 40]
-          }
-        ]
+            data: [40, 39, 10, 40, 39, 80, 40],
+          },
+        ],
       },
       { responsive: true, maintainAspectRatio: false }
     );
-  }
+  },
 };
 </script>

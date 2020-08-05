@@ -7,7 +7,7 @@
           transition="scale-transition"
            max-width="250"
           ></v-img>
-        </v-col>
+        </v-col> 
         <v-col cols="2"></v-col>
         <v-col cols="6">
            <v-tabs
