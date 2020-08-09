@@ -4,10 +4,9 @@
     <v-app>
       <TableGold></TableGold>
     </v-app>
-    <v-content transition="slide-x-transition">
+    <v-content transition="slide-y-transition">
       <router-view></router-view>
     </v-content>
-
     <Footer></Footer>
   </div>
 </template>
@@ -18,19 +17,15 @@ import TableGold from "@/components/TableGold.vue";
 import Footer from "@/components/Footer.vue";
 export default {
   name: "App",
-
   components: {
     PContainer,
     TableGold,
     Footer,
   },
-  data: () => ({
-    //
-  }),
 };
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap");
 * {
   font-family: "Oswald", sans-serif;

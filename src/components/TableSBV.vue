@@ -57,7 +57,7 @@ components:{
       getDay:null,
       items:[
         {
-          name:'VCB',
+        name:'VCB',
         path:'/VCB'
          },
         {
@@ -87,37 +87,19 @@ components:{
     this.checkData();
   },
   methods: {
-    getData:function() {
-      axios
-        .get(this.$options.url_gold)
-        .then(response => {
-              this.getDay = response.data.results;
-              localStorage.setItem("api",this.getDay);
-        })
-        .catch(err => {
-        //   this.loading = false;
-          console.log(err);
-        });
-    },
     callData:function(){
-      this.url_rate = localStorage.getItem("api");
+      this.url_rate = localStorage.getItem("api_rate");
       var get_url =
-        `https://vapi.vnappmob.com/api/v2/exchange_rate/sbv?api_key=${this.url_rate}`;
+        `https://vapi.vnappmob.com/api/v2/exchange_rate/vcb?api_key=${this.url_rate}`;
       axios
         .get(get_url)
         .then(response => {
           this.item_rate = response.data.results;
         })
     },
-    checkData:function(){
-      if(localStorage.getItem("api")!==null){
+     checkData:function(){
           this.callData();
           setTimeout(this.checkData,600000);
-      }
-      else{
-          this.getData();
-           setTimeout(this.checkData,600000);
-      }
     }
     }
   }
