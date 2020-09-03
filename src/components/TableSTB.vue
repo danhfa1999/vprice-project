@@ -27,8 +27,8 @@
           <tbody>
             <tr id="gold" v-for="item in item_rate" :key="item">
               <td class="product">{{ item.currency }}</td>
-              <td>{{ formatPrice(item.buy_cash) }}</td>
-              <td>{{ formatPrice(item.buy_transfer) }}</td>
+              <td>-</td>
+              <td>-</td>
               <td>{{ formatPrice(item.sell) }}</td>
             </tr>
           </tbody>
@@ -92,6 +92,10 @@ export default {
     checkData: function() {
       this.callData();
       setTimeout(this.checkData, 600000);
+    },
+    formatPrice(value) {
+      let val = (value / 1).toFixed(0).replace(".", ".");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     },
   },
 };
