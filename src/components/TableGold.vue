@@ -1,169 +1,118 @@
 <template>
-  <v-app>
+  <v-card height="600" color="#3e94ec">
     <v-row>
-      <v-col cols="4">
-        <v-card class="text-center mt-16 py-6 ml-6" shaped elevation="10">
-          <v-simple-table md="6" lg="6" xl="6">
-            <thead class="branch-list">
+      <v-col cols="4" sm="12" md="4">
+        <v-card class="text-center mt-2 ml-6" dense rounded elevation="10">
+          <v-simple-table md="6" lg="6" xl="6" sm="12" class="table-fill">
+            <thead class="content-table">
               <tr>
-                <th class="text-center">Sản Phẩm</th>
-                <th class="text-center">Mua vào</th>
-                <th class="text-center">Bán ra</th>
+                <th class="text-center">{{ $t("product") }}</th>
+                <th class="text-center">{{ $t("buy") }}</th>
+                <th class="text-center">{{ $t("sell") }}</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>{{ SJC[0] }}</td>
-                <td>{{ item_SJC.buy_1c }}</td>
-                <td>{{ item_SJC.sell_1l }}</td>
-              </tr>
-              <tr>
-                <td>{{ SJC[1] }}</td>
-                <td>{{ item_SJC.buy_1l }}</td>
-                <td>{{ item_SJC.sell_1c }}</td>
-              </tr>
-              <tr>
-                <td>{{ SJC[2] }}</td>
-                <td>{{ item_SJC.buy_nhan1c }}</td>
-                <td>{{ item_SJC.sell_nhan1c }}</td>
-              </tr>
-              <tr>
-                <td>{{ SJC[3] }}</td>
-                <td>{{ item_SJC.buy_trangsuc49 }}</td>
-                <td>{{ item_SJC.sell_trangsuc49 }}</td>
-              </tr>
-            </tbody>
-          </v-simple-table>
-        </v-card>
-      </v-col>
-      <v-col cols="4">
-        <v-card class="text-center mt-16 py-6" shaped elevation="10">
-          <v-simple-table md="6" lg="6" xl="6">
-            <thead>
               <tr class="branch-list">
-                <th class="text-center">Sản Phẩm</th>
-                <th class="text-center">Mua vào</th>
-                <th class="text-center">Bán ra</th>
+                <td>{{ SJC[0] }}</td>
+                <td>{{ formatPrice(item_SJC.buy_1c) }}</td>
+                <td>{{ formatPrice(item_SJC.sell_1l) }}</td>
+              </tr>
+              <tr class="branch-list">
+                <td>{{ SJC[1] }}</td>
+                <td>{{ formatPrice(item_SJC.buy_1l) }}</td>
+                <td>{{ formatPrice(item_SJC.sell_1c) }}</td>
+              </tr>
+              <tr class="branch-list">
+                <td>{{ SJC[2] }}</td>
+                <td>{{ formatPrice(item_SJC.buy_nhan1c) }}</td>
+                <td>{{ formatPrice(item_SJC.sell_nhan1c) }}</td>
+              </tr>
+              <tr class="branch-list">
+                <td>{{ SJC[3] }}</td>
+                <td>{{ formatPrice(item_SJC.buy_trangsuc49) }}</td>
+                <td>{{ formatPrice(item_SJC.sell_trangsuc49) }}</td>
+              </tr>
+            </tbody>
+          </v-simple-table>
+        </v-card>
+      </v-col>
+      <v-col cols="4" sm="12" md="4">
+        <v-card class="text-center mt-2 " rounded elevation="10">
+          <v-simple-table md="6" lg="6" xl="6" class="table-fill">
+            <thead class="content-table">
+              <tr>
+                <th class="text-center">{{ $t("product") }}</th>
+                <th class="text-center">{{ $t("buy") }}</th>
+                <th class="text-center">{{ $t("sell") }}</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr class="branch-list">
                 <td>{{ DOJI[0] }}</td>
-                <td>{{ item_DOJI.buy_hcm }}</td>
-                <td>{{ item_DOJI.sell_hcm }}</td>
+                <td>{{ formatPrice(item_DOJI.buy_hcm) }}</td>
+                <td>{{ formatPrice(item_DOJI.sell_hcm) }}</td>
               </tr>
-              <tr>
+              <tr class="branch-list">
                 <td>{{ DOJI[1] }}</td>
-                <td>{{ item_DOJI.buy_hn }}</td>
-                <td>{{ item_DOJI.sell_hn }}</td>
+                <td>{{ formatPrice(item_DOJI.buy_hn) }}</td>
+                <td>{{ formatPrice(item_DOJI.sell_hn) }}</td>
               </tr>
-              <tr>
+              <tr class="branch-list">
                 <td>{{ DOJI[2] }}</td>
-                <td>{{ item_DOJI.buy_dn }}</td>
-                <td>{{ item_DOJI.sell_dn }}</td>
+                <td>{{ formatPrice(item_DOJI.buy_dn) }}</td>
+                <td>{{ formatPrice(item_DOJI.sell_dn) }}</td>
               </tr>
-              <tr>
+              <tr class="branch-list">
                 <td>{{ DOJI[3] }}</td>
-                <td>{{ item_DOJI.buy_ct }}</td>
-                <td>{{ item_DOJI.sell_ct }}</td>
+                <td>{{ formatPrice(item_DOJI.buy_ct) }}</td>
+                <td>{{ formatPrice(item_DOJI.sell_ct) }}</td>
               </tr>
             </tbody>
           </v-simple-table>
         </v-card>
       </v-col>
-      <v-col cols="4">
-        <v-card class="text-center mt-16 mr-6" shaped elevation="10">
-          <v-simple-table md="6" lg="6" xl="6">
-            <thead class="branch-list">
+      <v-col cols="4" sm="12" md="4">
+        <v-card class="text-center mt-2 mr-6" rounded elevation="10">
+          <v-simple-table md="6" lg="6" xl="6" class="table-fill">
+            <thead class="content-table">
               <tr>
-                <th class="text-center">Sản Phẩm</th>
-                <th class="text-center">Mua vào</th>
-                <th class="text-center">Bán ra</th>
+                <th class="text-center">{{ $t("product") }}</th>
+                <th class="text-center">{{ $t("buy") }}</th>
+                <th class="text-center">{{ $t("sell") }}</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr class="branch-list">
                 <td>{{ PNJ[0] }}</td>
-                <td>{{ item_PNJ.buy_nhan_24k }}</td>
-                <td>{{ item_PNJ.sell_nhan_24k }}</td>
+                <td>{{ formatPrice(item_PNJ.buy_nhan_24k) }}</td>
+                <td>{{ formatPrice(item_PNJ.sell_nhan_24k) }}</td>
               </tr>
-              <tr>
+              <tr class="branch-list">
                 <td>{{ PNJ[1] }}</td>
-                <td>{{ item_PNJ.buy_nt_24k }}</td>
-                <td>{{ item_PNJ.sell_nt_24k }}</td>
+                <td>{{ formatPrice(item_PNJ.buy_nt_24k) }}</td>
+                <td>{{ formatPrice(item_PNJ.sell_nt_24k) }}</td>
               </tr>
-              <tr>
+              <tr class="branch-list">
                 <td>{{ PNJ[2] }}</td>
-                <td>{{ item_PNJ.buy_nt_18k }}</td>
-                <td>{{ item_PNJ.sell_nt_18k }}</td>
+                <td>{{ formatPrice(item_PNJ.buy_nt_18k) }}</td>
+                <td>{{ formatPrice(item_PNJ.sell_nt_18k) }}</td>
               </tr>
-              <tr>
+              <tr class="branch-list">
                 <td>{{ PNJ[3] }}</td>
-                <td>{{ item_PNJ.buy_nt_14k }}</td>
-                <td>{{ item_PNJ.sell_nt_14k }}</td>
+                <td>{{ formatPrice(item_PNJ.buy_nt_14k) }}</td>
+                <td>{{ formatPrice(item_PNJ.sell_nt_14k) }}</td>
               </tr>
-              <tr>
+              <tr class="branch-list">
                 <td>{{ PNJ[4] }}</td>
-                <td>{{ item_PNJ.buy_nt_10k }}</td>
-                <td>{{ item_PNJ.sell_nt_10k }}</td>
+                <td>{{ formatPrice(item_PNJ.buy_nt_10k) }}</td>
+                <td>{{ formatPrice(item_PNJ.sell_nt_10k) }}</td>
               </tr>
             </tbody>
           </v-simple-table>
         </v-card>
       </v-col>
     </v-row>
-    <v-divider></v-divider>
-
-    <v-row>
-      <v-col cols="1"></v-col>
-      <v-col cols="7" class>
-        <v-hover v-slot:default="{ hover }" open-delay="200">
-          <v-card
-            class="text-center"
-            color="light"
-            max-width="700"
-            height="270"
-            shaped
-            :elevation="hover ? 20 : 2"
-          >
-            <v-card-text>
-              <v-sheet>
-                <!-- <AreaChart></AreaChart> -->
-                <v-sparkline
-                  :value="value"
-                  :gradient="gradient"
-                  :smooth="radius || false"
-                  :padding="padding"
-                  :show-labels="true"
-                  :labels="labels"
-                  :line-width="width"
-                  :stroke-linecap="lineCap"
-                  :gradient-direction="gradientDirection"
-                  :fill="fill"
-                  :type="type"
-                  :auto-line-width="autoLineWidth"
-                  auto-draw
-                ></v-sparkline>
-              </v-sheet>
-            </v-card-text>
-            <v-card-text>
-              <div class="font-weight-bold">
-                <pwd>SJC 1L,10L</pwd>
-              </div>
-            </v-card-text>
-          </v-card>
-        </v-hover>
-      </v-col>
-      <v-col cols="4">
-        <v-hover v-slot:default="{ hover }" open-delay="200">
-          <v-card shaped :elevation="hover ? 20 : 2" class="mr-12 mb-12">
-            <v-date-picker color="teal accent-4" :landscape="true" v-model="picker"></v-date-picker>
-          </v-card>
-        </v-hover>
-      </v-col>
-      <v-col cols="2"></v-col>
-    </v-row>
-  </v-app>
+  </v-card>
 </template>
 
 <script>
@@ -179,7 +128,6 @@ const gradients = [
 ];
 export default {
   name: "TableSJC",
-  props: ["App"],
   components: {},
   data() {
     return {
@@ -214,7 +162,13 @@ export default {
       autoLineWidth: false,
     };
   },
-  mounted: function () {
+  methods: {
+    formatPrice(value) {
+      let val = (value / 1).toFixed(0).replace(".", ".");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    },
+  },
+  mounted: function() {
     this.url_gold = localStorage.getItem("api_gold");
     var get_sjc = `https://vapi.vnappmob.com/api/v2/gold/sjc?api_key=${this.url_gold}`;
     var get_doji = `https://vapi.vnappmob.com/api/v2/gold/doji?api_key=${this.url_gold}`;
@@ -227,7 +181,6 @@ export default {
       .then(
         axios.spread((...responses) => {
           this.item_SJC = responses[0].data.results[0];
-          console.log(this.item_SJC);
           this.item_DOJI = responses[1].data.results[0];
           this.item_PNJ = responses[2].data.results[0];
         })
@@ -240,10 +193,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #calendar {
   position: relative;
   bottom: 200px;
+}
+.text-center {
+  color: #f5f5f5 !important;
+  height: 5rem !important;
+  font-weight: 700;
 }
 #shibaa {
   display: flex;
@@ -255,5 +213,122 @@ export default {
     color: white;
   }
   padding: 10px;
+}
+
+.content-table {
+  font-size: 24px;
+  height: 6rem !important;
+}
+.table-fill {
+  background: white;
+  border-radius: 3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding: 5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+
+th {
+  color: #d5dde5;
+  background: #1b1e24;
+  border-bottom: 4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size: 23px;
+  font-weight: 100;
+  padding: 24px;
+  text-align: left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align: middle;
+}
+
+th:first-child {
+  border-top-left-radius: 3px;
+}
+
+th:last-child {
+  border-top-right-radius: 3px;
+  border-right: none;
+}
+
+tr {
+  border-top: 1px solid #c1c3d1;
+  border-bottom: 1px solid #c1c3d1;
+  color: #666b85;
+  font-size: 16px;
+  font-weight: normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+tr:hover td {
+  background: #4e5066;
+  color: #ffffff;
+  border-top: 1px solid #22262e;
+}
+
+tr:first-child {
+  border-top: none;
+}
+
+tr:last-child {
+  border-bottom: none;
+}
+
+tr:nth-child(odd) td {
+  background: #ebebeb;
+}
+
+tr:nth-child(odd):hover td {
+  background: #4e5066;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius: 3px;
+}
+
+tr:last-child td:last-child {
+  border-bottom-right-radius: 3px;
+}
+
+td {
+  background: #ffffff;
+  padding: 20px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 300;
+  font-size: 18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #c1c3d1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
 }
 </style>

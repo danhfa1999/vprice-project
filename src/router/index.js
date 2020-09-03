@@ -7,32 +7,39 @@ import TableSTB from '../components/TableSTB.vue'
 import TableBIDV from '../components/TableBIDV.vue'
 import TableSBV from '../components/TableSBV.vue'
 import TableVCB from '../components/TableVCB.vue'
+import TableGold from '../components/TableGold.vue'
 
 
 
 Vue.use(VueRouter)
 
-  const routes = [{
+const routes = [{
     path: '/',
     component: Home
-  },{ path: '/VCB',
-  component: TableVCB
-  }
-    ,{ path: '/TCB',
+  }, {
+    path: '/VCB',
+    component: TableVCB
+  }, {
+    path: '/TCB',
     component: TableTCB
-    }
-    ,{ path: '/CTG',
+  }, {
+    path: '/CTG',
     component: TableCTG
-    }
-    ,{ path: '/STB',
+  }, {
+    path: '/STB',
     component: TableSTB
-    }
-    ,{ path: '/BIDV',
+  }, {
+    path: '/TableGold',
+    component: TableGold
+  }
+
+  , {
+    path: '/BIDV',
     component: TableBIDV
-    }
-    ,{ path: '/SBV',
+  }, {
+    path: '/SBV',
     component: TableSBV
-    }
+  }
 ]
 
 
