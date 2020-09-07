@@ -85,7 +85,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getProducts", "tcb");
-    console.log("Im in heart Mylan");
   },
   methods: {
     // callData: function() {

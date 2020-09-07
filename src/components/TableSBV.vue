@@ -10,8 +10,7 @@
             :to="item.path"
             class="text--black"
             :key="item.name"
-            >{{ item.name }}</v-tab
-          >
+          >{{ item.name }}</v-tab>
         </v-tabs>
       </v-card>
       <v-card class="text-center" elevation="10" dark>
@@ -25,10 +24,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr id="gold" v-for="item in item_rate" :key="item">
+            <tr id="gold" v-for="item in listItem" :key="item">
               <td class="product">{{ item.currency }}</td>
-              <td>{{ formatPrice(item.buy_cash) }}</td>
-              <td>{{ formatPrice(item.buy_transfer) }}</td>
+              <td>{{ formatPrice(item.buy) }}</td>
+              <td>-</td>
               <td>{{ formatPrice(item.sell) }}</td>
             </tr>
           </tbody>
@@ -38,8 +37,6 @@
   </v-row>
 </template>
 <script>
-import axios from "axios";
-
 export default {
   name: "TableSBV",
   components: {
@@ -78,21 +75,26 @@ export default {
       ],
     };
   },
-  created() {
-    this.checkData();
+  computed: {
+    listItem() {
+      return this.$store.state.products.products;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("getProducts", "sbv");
   },
   methods: {
-    callData: function() {
-      this.url_rate = localStorage.getItem("api_rate");
-      var get_url = `https://vapi.vnappmob.com/api/v2/exchange_rate/vcb?api_key=${this.url_rate}`;
-      axios.get(get_url).then((response) => {
-        this.item_rate = response.data.results;
-      });
-    },
-    checkData: function() {
-      this.callData();
-      setTimeout(this.checkData, 600000);
-    },
+    // callData: function() {
+    //   this.url_rate = localStorage.getItem("api_rate");
+    //   var get_url = `https://vapi.vnappmob.com/api/v2/exchange_rate/vcb?api_key=${this.url_rate}`;
+    //   axios.get(get_url).then((response) => {
+    //     this.item_rate = response.data.results;
+    //   });
+    // },
+    // checkData: function() {
+    //   this.callData();
+    //   setTimeout(this.checkData, 600000);
+    // },
     formatPrice(value) {
       let val = (value / 1).toFixed(0).replace(".", ".");
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");

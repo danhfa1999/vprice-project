@@ -88,7 +88,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getProducts", "vcb");
-    console.log("Im in heart Mylan");
   },
   methods: {
     // callData: function () {

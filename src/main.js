@@ -32,7 +32,7 @@ const api_rate = "https://vapi.vnappmob.com/api/request_api_key?scope=exchange_r
     localStorage.setItem("api_gold", getGold);
     localStorage.setItem("api_rate", getRate);
   } else {
-    localStorage.getItem("api_rate");
+    console.log("")
   }
   new Vue({
     router,
