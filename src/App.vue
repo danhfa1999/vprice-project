@@ -1,9 +1,9 @@
 <template>
   <v-app>
     <PContainer></PContainer>
-    <v-content transition="slide-y-transition">
+    <v-main transition="slide-y-transition">
       <router-view></router-view>
-    </v-content>
+    </v-main>
     <Footer></Footer>
   </v-app>
 </template>

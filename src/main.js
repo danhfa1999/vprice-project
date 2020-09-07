@@ -4,6 +4,9 @@ import router from './router'
 import vuetify from './plugins/vuetify';
 import axios from "axios";
 import i18n from '@/plugins/i18n';
+import
+store
+from './store/store'
 
 Vue.config.productionTip = false
 const api_gold = "https://vapi.vnappmob.com/api/request_api_key?scope=gold";
@@ -34,6 +37,7 @@ const api_rate = "https://vapi.vnappmob.com/api/request_api_key?scope=exchange_r
   new Vue({
     router,
     vuetify,
+    store,
     i18n,
     render: h => h(App)
   }).$mount('#app')

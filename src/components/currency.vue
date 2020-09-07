@@ -14,13 +14,10 @@
                       height="50px"
                       rounded
                       type="number"
-                      placeholder=""
+                      placeholder
                       v-model="convert"
-                    >
-                    </v-text-field>
-                    <v-flex md2>
-                      <div></div>
-                    </v-flex>
+                    ></v-text-field>
+                    <v-flex md2></v-flex>
                   </v-flex>
                 </v-flex>
                 <v-flex xs12 md4 align-self-center class="mt-10">
@@ -111,16 +108,14 @@ export default {
       currency: {},
       convert: 0,
       value: 23,
+      shiba: null,
     };
   },
-  mounted() {
-    this.getCurrency;
-  },
   watch: {
-    value: function(v) {
+    value: function (v) {
       this.convert = v / 5;
     },
-    convert: function(v) {
+    convert: function (v) {
       this.value = v / 5;
     },
   },
