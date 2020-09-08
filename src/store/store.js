@@ -28,5 +28,10 @@ export default new Vuex.Store({
                     console.log(err);
                 })
         },
+    },
+    getters: {
+        filterName: (state) => (name) => {
+            return state.products.products.find(e => e.currency === name).sell;
+        }
     }
 })

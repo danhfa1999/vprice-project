@@ -37,7 +37,7 @@
         </v-card>
       </v-col>
       <v-col cols="4" sm="12" md="4">
-        <v-card class="text-center mt-2 " rounded elevation="10">
+        <v-card class="text-center mt-2" rounded elevation="10">
           <v-simple-table md="6" lg="6" xl="6" class="table-fill">
             <thead class="content-table">
               <tr>
@@ -116,7 +116,6 @@
 </template>
 
 <script>
-// import AreaChart from "@/components/AreaChart.vue";
 import axios from "axios";
 const gradients = [
   ["#222"],
@@ -168,7 +167,7 @@ export default {
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     },
   },
-  mounted: function() {
+  mounted: function () {
     this.url_gold = localStorage.getItem("api_gold");
     var get_sjc = `https://vapi.vnappmob.com/api/v2/gold/sjc?api_key=${this.url_gold}`;
     var get_doji = `https://vapi.vnappmob.com/api/v2/gold/doji?api_key=${this.url_gold}`;
@@ -223,10 +222,9 @@ export default {
   background: white;
   border-radius: 3px;
   border-collapse: collapse;
-  height: 320px;
-  margin: auto;
+  height: 330px;
   max-width: 600px;
-  padding: 5px;
+  padding: -10px;
   width: 100%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   animation: float 5s infinite;

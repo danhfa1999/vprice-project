@@ -4,8 +4,9 @@
       <currency></currency>
       <TableGold></TableGold>
     </v-card>
-
-    <TableVCB></TableVCB>
+    <v-card color="#3e94ec">
+      <TableVCB></TableVCB>
+    </v-card>
   </div>
 </template>
 

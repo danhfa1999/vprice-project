@@ -3,49 +3,58 @@
     <v-layout wrap>
       <v-flex xs12 sm12>
         <v-layout>
-          <v-flex>
-            <v-card round outlined height="200">
-              <v-layout>
-                <v-flex md4 class="mt-10">
-                  <v-flex md8 class="ml-2">
-                    <v-text-field
-                      class="questrial no-top-padding"
-                      background-color="grey lighten-3"
-                      height="50px"
-                      rounded
-                      type="number"
-                      placeholder
-                      v-model="convert"
-                    ></v-text-field>
-                    <v-flex md2></v-flex>
-                  </v-flex>
+          <v-flex md6>
+            <v-card round outlined>
+              <v-layout align-center>
+                <v-flex md5>
+                  <v-layout>
+                    <v-flex md4 class="ml-2 mt-5">
+                      <v-select :items="['USD','JPY','EUR','AUD','CAD']" dense dark solo></v-select>
+                    </v-flex>
+                    <v-flex md8 class="ml-2">
+                      <v-text-field
+                        class="questrial no-top-padding"
+                        background-color="grey lighten-3"
+                        height="50px"
+                        rounded
+                        type="number"
+                        placeholder
+                        v-model="convert"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
                 </v-flex>
-                <v-flex xs12 md4 align-self-center class="mt-10">
+                <v-flex xs12 md2>
                   <div class="btn-bg">
                     <button id="btn-convert">
                       <v-icon id="icon-convert">fas fa-sync-alt</v-icon>
                     </button>
                   </div>
                 </v-flex>
-                <v-flex md4>
-                  <v-col cols="12" class="text-center mt-10">
-                    <count-to
-                      ref="example"
-                      :start-val="0"
-                      :end-val="value"
-                      :duration="Number(duration)"
-                      :decimals="Number(decimals)"
-                      :separator="separator"
-                      :prefix="prefix"
-                      :suffix="suffix"
-                      class="display-2 font-weight-medium blue--text text--lighten-1"
-                    />
-                  </v-col>
+                <v-flex md5>
+                  <v-layout align-center>
+                    <v-flex md4 class="ml-10 mt-5">
+                      <v-select :items="['USD','JPY','EUR','AUD','CAD']" dense dark solo></v-select>
+                    </v-flex>
+                    <v-flex md8>
+                      <count-to
+                        ref="example"
+                        :start-val="0"
+                        :end-val="filterName('USD')"
+                        :duration="Number(duration)"
+                        :decimals="Number(decimals)"
+                        :separator="separator"
+                        :prefix="prefix"
+                        :suffix="suffix"
+                        class="display-1 font-weight-medium blue--text text--lighten-1"
+                      />
+                    </v-flex>
+                  </v-layout>
                 </v-flex>
               </v-layout>
             </v-card>
           </v-flex>
-          <v-flex class="mt-6">
+          <v-flex md6 class="mt-6">
             <div class="px-4">
               <v-layout>
                 <v-flex md12>
@@ -56,7 +65,7 @@
                       color="orange"
                       chart="newVisitis"
                       :start="0"
-                      :end="102400"
+                      :end="filterName('USD')"
                       :duration="2600"
                     />
                     <card
@@ -65,7 +74,7 @@
                       color="blue"
                       chart="messages"
                       :start="0"
-                      :end="81212"
+                      :end="filterName('EUR')"
                       :duration="3000"
                     />
                     <card
@@ -73,7 +82,7 @@
                       icon="mdi-currency-usd"
                       chart="purchases"
                       :start="0"
-                      :end="9280"
+                      :end="filterName('JPY')"
                       :duration="3200"
                     />
                   </v-row>
@@ -102,12 +111,10 @@ export default {
       duration: 1000,
       decimals: 0,
       separator: ",",
-      suffix: " usd",
-      prefix: "$ ",
-      items: ["Foo", "Bar", "Fizz", "Buzz"],
+      suffix: "",
+      prefix: "",
       currency: {},
       convert: 0,
-      value: 23,
       shiba: null,
     };
   },
@@ -117,6 +124,11 @@ export default {
     },
     convert: function (v) {
       this.value = v / 5;
+    },
+  },
+  computed: {
+    filterName() {
+      return this.$store.getters.filterName;
     },
   },
 };
