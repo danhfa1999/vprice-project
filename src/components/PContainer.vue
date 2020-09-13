@@ -3,32 +3,19 @@
     <v-app-bar app flat hide-on-scroll>
       <v-toolbar flat>
         <v-toolbar-title>
-          <v-card-title id="branch-logo" large class="mr-12 pr-12"
-            >Vprice</v-card-title
-          >
+          <v-card-title id="branch-logo" large class="mr-12 pr-12">Vprice</v-card-title>
         </v-toolbar-title>
         <v-toolbar-items>
-          <v-btn
-            v-for="item in items"
-            link
-            rounded=""
-            :to="item.path"
-            :key="item"
-            text
-            color=" "
-            >{{ item.title }}</v-btn
-          >
+          <v-btn v-for="item in items" link :to="item.path" :key="item" text color>{{ item.title }}</v-btn>
         </v-toolbar-items>
         <v-spacer></v-spacer>
-        <v-btn class="mr-6 mx-6" icon large color="">
+        <v-btn class="mr-6 mx-6" icon large color>
           <v-icon>mdi-bell</v-icon>
         </v-btn>
         <v-menu offset-y>
           <template v-slot:activator="{ on }">
             <v-btn icon text v-on="on">
-              <v-icon>
-                mdi-translate
-              </v-icon>
+              <v-icon>mdi-translate</v-icon>
             </v-btn>
           </template>
           <v-list>
@@ -41,7 +28,7 @@
             </v-list-item>
           </v-list>
         </v-menu>
-        <v-btn class="mx-6" @click.stop="drawer = !drawer" icon large color="">
+        <v-btn class="mx-6" @click.stop="drawer = !drawer" icon large color>
           <v-icon>fas fa-align-right</v-icon>
         </v-btn>
       </v-toolbar>
@@ -82,12 +69,12 @@ export default {
       drawer: null,
       items: [
         { title: "Home", icon: "fa-home", path: "/" },
-        { title: "Giá Vàng", icon: "mdi-diamond", path: "/TableGold" },
+        { title: "Giá Vàng", icon: "mdi-diamond", path: "/gold/TableGold" },
         {
           title: "Tỷ Giá",
           icon: "mdi-currency-usd",
           list: "mdi-chevron-down",
-          path: "/VCB",
+          path: "/exchange/VCB",
         },
         { title: "Liên Hệ", icon: "mdi-information", path: "/Contact" },
       ],

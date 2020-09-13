@@ -8,9 +8,6 @@
               <v-layout align-center>
                 <v-flex md5>
                   <v-layout>
-                    <v-flex md4 class="ml-2 mt-5">
-                      <v-select :items="['USD','JPY','EUR','AUD','CAD']" dense dark solo></v-select>
-                    </v-flex>
                     <v-flex md8 class="ml-2">
                       <v-text-field
                         class="questrial no-top-padding"
@@ -21,6 +18,15 @@
                         placeholder
                         v-model="convert"
                       ></v-text-field>
+                    </v-flex>
+                    <v-flex md4 class="ml-2 mt-5">
+                      <v-select
+                        :items="['USD','JPY','EUR','AUD','CAD']"
+                        label="USD"
+                        dense
+                        dark
+                        solo
+                      ></v-select>
                     </v-flex>
                   </v-layout>
                 </v-flex>
@@ -34,7 +40,13 @@
                 <v-flex md5>
                   <v-layout align-center>
                     <v-flex md4 class="ml-10 mt-5">
-                      <v-select :items="['USD','JPY','EUR','AUD','CAD']" dense dark solo></v-select>
+                      <v-select
+                        :items="['USD','JPY','EUR','AUD','CAD']"
+                        label="VND"
+                        dense
+                        dark
+                        solo
+                      ></v-select>
                     </v-flex>
                     <v-flex md8>
                       <count-to
@@ -82,7 +94,7 @@
                       icon="mdi-currency-usd"
                       chart="purchases"
                       :start="0"
-                      :end="filterName('JPY')"
+                      :end="filterName('TWD')"
                       :duration="3200"
                     />
                   </v-row>
@@ -129,6 +141,9 @@ export default {
   computed: {
     filterName() {
       return this.$store.getters.filterName;
+    },
+    getCountry() {
+      return this.$store.getters.getCountry;
     },
   },
 };

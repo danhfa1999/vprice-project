@@ -48,32 +48,7 @@ export default {
       item_rate: null,
       url_rate: null,
       getDay: null,
-      items: [
-        {
-          name: "VCB",
-          path: "/VCB",
-        },
-        {
-          name: "CTG",
-          path: "/CTG",
-        },
-        {
-          name: "TCB",
-          path: "/TCB",
-        },
-        {
-          name: "STB",
-          path: "/STB",
-        },
-        {
-          name: "BIDV",
-          path: "/BIDV",
-        },
-        {
-          name: "SBV",
-          path: "/SBV",
-        },
-      ],
+      items: this.$store.state.items,
     };
   },
   computed: {

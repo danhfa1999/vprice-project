@@ -53,27 +53,27 @@ export default {
       items: [
         {
           name: "VCB",
-          path: "/VCB",
+          path: "/exchange/VCB",
         },
         {
           name: "CTG",
-          path: "/CTG",
+          path: "/exchange/CTG",
         },
         {
           name: "TCB",
-          path: "/TCB",
+          path: "/exchange/TCB",
         },
         {
           name: "STB",
-          path: "/STB",
+          path: "/exchange/STB",
         },
         {
           name: "BIDV",
-          path: "/BIDV",
+          path: "/exchange/exchange/BIDV",
         },
         {
           name: "SBV",
-          path: "/SBV",
+          path: "/exchange/SBV",
         },
       ],
     };

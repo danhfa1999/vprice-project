@@ -14,33 +14,30 @@ import TableGold from '../components/TableGold.vue'
 Vue.use(VueRouter)
 
 const routes = [{
-    path: '/',
-    component: Home
-  }, {
-    path: '/VCB',
-    component: TableVCB
-  }, {
-    path: '/TCB',
-    component: TableTCB
-  }, {
-    path: '/CTG',
-    component: TableCTG
-  }, {
-    path: '/STB',
-    component: TableSTB
-  }, {
-    path: '/TableGold',
-    component: TableGold
-  }
-
-  , {
-    path: '/BIDV',
-    component: TableBIDV
-  }, {
-    path: '/SBV',
-    component: TableSBV
-  }
-]
+  path: '/',
+  component: Home
+}, {
+  path: '/exchange/VCB',
+  component: TableVCB
+}, {
+  path: '/exchange/TCB',
+  component: TableTCB
+}, {
+  path: '/exchange/CTG',
+  component: TableCTG
+}, {
+  path: '/exchange/STB',
+  component: TableSTB
+}, {
+  path: '/gold/TableGold',
+  component: TableGold
+}, {
+  path: '/exchange/BIDV',
+  component: TableBIDV
+}, {
+  path: '/exchange/SBV',
+  component: TableSBV
+}]
 
 
 const router = new VueRouter({
