@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <PContainer></PContainer>
-    <v-main transition="slide-y-transition">
+    <v-main v-if="!loading" transition="slide-y-transition">
       <router-view></router-view>
     </v-main>
     <Footer></Footer>
@@ -12,11 +12,19 @@
 import PContainer from "@/components/PContainer.vue";
 import Footer from "@/components/Footer.vue";
 
-export default {
+export default {  
   name: "App",
   components: {
     Footer,
     PContainer,
+  },
+  mounted: function () {
+    this.$store.dispatch("getProducts");
+  },
+  computed: {
+    loading() {
+      return this.$store.state.loading;
+    },
   },
 };
 </script>

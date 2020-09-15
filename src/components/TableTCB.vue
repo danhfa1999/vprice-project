@@ -55,11 +55,8 @@ export default {
   },
   computed: {
     listItem() {
-      return this.$store.state.products.products;
+      return this.$store.state.listBank[0].tcb;
     },
-  },
-  mounted() {
-    this.$store.dispatch("getProducts", "tcb");
   },
   methods: {
     // callData: function() {

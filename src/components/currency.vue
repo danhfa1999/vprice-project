@@ -31,11 +31,36 @@
                   </v-layout>
                 </v-flex>
                 <v-flex xs12 md2>
-                  <div class="btn-bg">
-                    <button id="btn-convert">
-                      <v-icon id="icon-convert">fas fa-sync-alt</v-icon>
-                    </button>
-                  </div>
+                  <v-row justify="center">
+                    <v-dialog v-model="dialog" persistent max-width="600px">
+                      <template v-slot:activator="{ on, attrs }">
+                        <div class="btn-bg">
+                          <button v-bind="attrs" v-on="on" id="btn-convert">
+                            <v-icon id="icon-convert">fas fa-sync-alt</v-icon>
+                          </button>
+                        </div>
+                      </template>
+                      <v-card>
+                        <v-card-title>
+                          <span class="headline">Search</span>
+                        </v-card-title>
+                        <v-card-text>
+                          <v-container fluid>
+                            <v-row>
+                              <v-col cols="12">
+                                <TableVCB></TableVCB>
+                              </v-col>
+                            </v-row>
+                          </v-container>
+                        </v-card-text>
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
+                          <v-btn color="blue darken-1" text @click="dialog = false">Save</v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+                  </v-row>
                 </v-flex>
                 <v-flex md5>
                   <v-layout align-center>
@@ -108,6 +133,7 @@
   </v-container>
 </template>
 <script>
+import TableVCB from "@/components/TableVCB";
 import CountTo from "vue-count-to";
 import card from "@/components/card.vue";
 export default {
@@ -115,6 +141,7 @@ export default {
   components: {
     card,
     CountTo,
+    TableVCB,
   },
   data() {
     return {
@@ -125,10 +152,13 @@ export default {
       separator: ",",
       suffix: "",
       prefix: "",
-      currency: {},
       convert: 0,
       shiba: null,
+      dialog: false,
     };
+  },
+  mounted: function () {
+    console.log("SHiaasdasd");
   },
   watch: {
     value: function (v) {

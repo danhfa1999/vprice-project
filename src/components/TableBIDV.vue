@@ -52,12 +52,10 @@ export default {
   },
   computed: {
     listItem() {
-      return this.$store.state.products.products;
+      return this.$store.state.listBank[0].bidv;
     },
   },
-  mounted() {
-    this.$store.dispatch("getProducts", "bid");
-  },
+
   methods: {
     // callData: function() {
     //   this.url_rate = localStorage.getItem("api_rate");

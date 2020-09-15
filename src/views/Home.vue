@@ -1,7 +1,9 @@
 <template>
   <div>
     <v-card color="#3e94ec">
-      <currency></currency>
+      <v-card>
+        <currency></currency>
+      </v-card>
       <TableGold></TableGold>
     </v-card>
     <v-card color="#3e94ec">
