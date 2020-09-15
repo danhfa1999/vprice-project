@@ -1,64 +1,86 @@
 <template>
   <v-row justify="center">
-    <v-dialog v-model="dialog" persistent max-width="600px">
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark v-bind="attrs" v-on="on">Open Dialog</v-btn>
-      </template>
-      <v-card>
-        <v-card-title>
-          <span class="headline">User Profile</span>
-        </v-card-title>
-        <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Legal first name*" required></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Legal middle name" hint="example of helper text only on focus"></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  label="Legal last name*"
-                  hint="example of persistent helper text"
-                  persistent-hint
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field label="Email*" required></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field label="Password*" type="password" required></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-select :items="['0-17', '18-29', '30-54', '54+']" label="Age*" required></v-select>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-autocomplete
-                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                  label="Interests"
-                  multiple
-                ></v-autocomplete>
-              </v-col>
-            </v-row>
-          </v-container>
-          <small>*indicates required field</small>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="dialog = false">Save</v-btn>
-        </v-card-actions>
+    <v-col cols="10">
+      <v-card elevation="8">
+        <v-tabs v-model="tab" background-color="#607D8B" dark grow>
+          <v-tabs-slider></v-tabs-slider>
+          <v-tab
+            v-for="item in items"
+            link
+            :to="item.path"
+            class="text--black"
+            :key="item.name"
+          >{{ item.name }}</v-tab>
+        </v-tabs>
       </v-card>
-    </v-dialog>
+      <v-card class="text-center" elevation="10" dark>
+        <v-simple-table>
+          <thead>
+            <tr class="content-table">
+              <th class="text-center">{{ $t("currency") }}</th>
+              <th class="text-center">{{ $t("buy") }}</th>
+              <th class="text-center">{{ $t("buytrans") }}</th>
+              <th class="text-center">{{ $t("selltele") }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="gold" v-for="item in listItem" :key="item.currency">
+              <td class="product">{{ item.currency }}</td>
+              <td>{{ formatPrice(item.buy_cash) }}</td>
+              <td>{{ formatPrice(item.buy_transfer) }}</td>
+              <td>{{ formatPrice(item.sell) }}</td>
+            </tr>
+          </tbody>
+        </v-simple-table>
+      </v-card>
+    </v-col>
   </v-row>
 </template>
-
 <script>
+// import axios from "axios";
+// import TableVCB from '../components/TableVCB.vue'
 export default {
-  data: () => ({
-    dialog: false,
-  }),
+  name: "TabRate",
+  url_gold: "https://vapi.vnappmob.com/api/request_api_key?scope=exchange_rate",
+  components: {
+    // TableVCB
+  },
+  data() {
+    return {
+      item_rate: null,
+      url_rate: null,
+      getDay: null,
+      items: [
+        {
+          name: "VCB",
+          path: "/exchange/VCB",
+        },
+        {
+          name: "CTG",
+          path: "/exchange/CTG",
+        },
+        {
+          name: "TCB",
+          path: "/exchange/TCB",
+        },
+        {
+          name: "STB",
+          path: "/exchange/STB",
+        },
+        {
+          name: "BIDV",
+          path: "/exchange/exchange/BIDV",
+        },
+        {
+          name: "SBV",
+          path: "/exchange/SBV",
+        },
+      ],
+    };
+  },
+  // created() {
+  //   this.checkData();
+  // },
 };
 </script>
+<style lang="scss"></style>

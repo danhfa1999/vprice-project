@@ -19,7 +19,7 @@
                         v-model="convert"
                       ></v-text-field>
                     </v-flex>
-                    <v-flex md4 class="ml-2 mt-5">
+                    <v-flex md4 class="mr-4 mt-5">
                       <v-select
                         :items="['USD','JPY','EUR','AUD','CAD']"
                         label="USD"
@@ -32,7 +32,7 @@
                 </v-flex>
                 <v-flex xs12 md2>
                   <v-row justify="center">
-                    <v-dialog v-model="dialog" persistent max-width="600px">
+                    <v-dialog v-model="dialog" dark persistent max-width="1400px">
                       <template v-slot:activator="{ on, attrs }">
                         <div class="btn-bg">
                           <button v-bind="attrs" v-on="on" id="btn-convert">
@@ -45,13 +45,12 @@
                           <span class="headline">Search</span>
                         </v-card-title>
                         <v-card-text>
-                          <v-container fluid>
+                          <v-container>
                             <v-row>
-                              <v-col cols="12">
-                                <TableVCB></TableVCB>
-                              </v-col>
+                              <TableVCB></TableVCB>
                             </v-row>
                           </v-container>
+                          <small>*indicates required field</small>
                         </v-card-text>
                         <v-card-actions>
                           <v-spacer></v-spacer>
@@ -152,8 +151,6 @@ export default {
       separator: ",",
       suffix: "",
       prefix: "",
-      convert: 0,
-      shiba: null,
       dialog: false,
     };
   },

@@ -100,7 +100,8 @@ export default new Vuex.Store({
                 .map((element) => element.currency);
         },
         findValue: (state) => (value) => {
-            return state.listBank[0].bidv.find((e) => e.currency === value).buy_cash;
+            return state.listBank[0].find((e) => e.currency === value).buy_cash;
         },
+
     },
 });
